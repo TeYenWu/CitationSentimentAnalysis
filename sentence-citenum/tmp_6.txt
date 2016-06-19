@@ -1,0 +1,8 @@
+Capacitive sensing [16], force sens­ ing approaches [6],  and vision [9] have been used to sense  changes in the physical properties of the wrist
+ Instead  of  providing  highaccuracy  sensing,  GestureWrist  [16] uses capacitive sensors to recognize a small set of ges­ tures
+ WristFlex  [6]  uses  an  array  of  force  sensitive  resis­ tors (FSRs) supporting 5 gestures at an accuracy rate greater  than  80%
+  Signal Source Comparison  To verify our assumption that the closer the signal source is  to the ﬁngers,  the greater the accuracy rate of ﬁner gesture  recognition is obtained, a comparison is made with a related  work [6] as in which we use the exact same setup except for  the onscreen feedback
+ Currently,  WristFlex [6] is a work  with the highest accuracy rates (>80%) supporting the am­ ple number of gestures (5 gestures) among other works using  wristbased signal source
+We choose the 4 pinching gestures  and a relaxed gesture [6] which are also included in our ges­ ture set
+ The methods to compute the accuracy rates are ex­ actly the same as [6]
+ The accuracy rate obtained from the  back of hand is statistically greater than that from the wrist  in a 10fold cross validation (98.2% vs 96.3%) and in a real time cross validation with 3 training trials and 6 testing trials  without feedback (90.6% vs 69.3%)
