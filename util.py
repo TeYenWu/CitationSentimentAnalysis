@@ -27,6 +27,7 @@ pennToWordnetPartOfSpeech = {'JJ' : [wordnet.ADJ, wordnet.ADJ_SAT], 'JJR' : [wor
 def getWordAvgPosNegScore(word, **kwargs):
     posScore = 0
     negScore = 0
+    numOfMatchNames = 0
     partOfSpeech = kwargs.get('partOfSpeech', None)
     try:
         sentiWords = list(swn.senti_synsets(word.split('.')[0]))
@@ -34,16 +35,19 @@ def getWordAvgPosNegScore(word, **kwargs):
             sentiWordName = sentiWord.synset.name().split('.')
             if sentiWordName[0] not in word.lower():
                 continue
+            numOfMatchNames += 1
             if partOfSpeech not in pennToWordnetPartOfSpeech:
                posScore += sentiWord.pos_score()
                negScore += sentiWord.neg_score()
             elif sentiWordName[1] in pennToWordnetPartOfSpeech[partOfSpeech]:
                posScore += sentiWord.pos_score()
                negScore += sentiWord.neg_score()   
-            
+
+        posScore /= numOfMatchNames
+        negScore /= numOfMatchNames        
     except Exception, e:
-        print e
-        # pass
+        # print e
+        pass
     return (posScore, negScore)
 
 #=============================================

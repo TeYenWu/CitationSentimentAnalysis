@@ -97,9 +97,21 @@ class SyntaxTree:
         self.negationScoreHandling(node)
 
     def accumulateChildrenNodeScore(self, node):
+        numOfSentiWords = 0
         for childNode in node.children:
+            if childNode.accumPosScore != 0 or childNode.accumNegScore != 0:
+                numOfSentiWords += 1
             node.accumPosScore += childNode.accumPosScore
             node.accumNegScore += childNode.accumNegScore
+        
+        if node.posScore != 0 or node.negScore != 0:
+            numOfSentiWords += 1
+
+        try:
+            node.accumPosScore /= numOfSentiWords
+            node.accumNegScore /= numOfSentiWords
+        except Exception, e:
+            pass
 
     def negationScoreHandling(self, node):
         for childNode in node.children:
